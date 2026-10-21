@@ -1,0 +1,22 @@
+workflows/channel-driven-subagent-dispatch/workflow.md
+  s_25e8f76f782e22::t_259e9b1db030c5 175
+  s_25e8f76f782e22::t_332ad4ca0c7433 59
+  s_25e8f76f782e22::t_0f99bdb9638c46 220-233
+  s_25e8f76f782e22::t_a77f433d4218b4 116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c79edc4af14c5b01d6a3b447e243bb133992cc4c",
+  "prompts": {},
+  "sessions": {
+    "s_25e8f76f782e22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8293918a-adf2-4786-b4d9-b5aedc5ccfbf",
+        "model": "deepseek-v4.1-flash"
+      },
+      "human_author": "tangxk <71157673@chinatelecom.cn>"
+    }
+  }
+}
