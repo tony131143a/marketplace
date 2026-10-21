@@ -1,0 +1,23 @@
+workflows/native/workflow.md
+  s_25e8f76f782e22::t_9b4c3c639ef87f 287,293,368,377,396,441,474,478,544,560
+  s_25e8f76f782e22::t_80441f9b3c6404 488,501,605
+  s_25e8f76f782e22::t_7d3504a5b108be 606
+workflows/channel-driven-subagent-dispatch/workflow.md
+  s_25e8f76f782e22::t_80441f9b3c6404 59,116,175,220-233
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "5796c3fec7f53a06b3f7ee0271305fc0fe76893c",
+  "prompts": {},
+  "sessions": {
+    "s_25e8f76f782e22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8293918a-adf2-4786-b4d9-b5aedc5ccfbf",
+        "model": "deepseek-v4.1-flash"
+      },
+      "human_author": "tangxk <71157673@chinatelecom.cn>"
+    }
+  }
+}
