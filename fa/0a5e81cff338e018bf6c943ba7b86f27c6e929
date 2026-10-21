@@ -1,0 +1,19 @@
+workflows/native/workflow.md
+  s_25e8f76f782e22::t_73a501996a1fd1 234,237,286,292,294,300,367,375,377,381,394,439,441,445,472,476,501,513,529,537,541,555,557,566
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "fa0a5e81cff338e018bf6c943ba7b86f27c6e929",
+  "prompts": {},
+  "sessions": {
+    "s_25e8f76f782e22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8293918a-adf2-4786-b4d9-b5aedc5ccfbf",
+        "model": "deepseek-v4.1-flash"
+      },
+      "human_author": "tangxk <71157673@chinatelecom.cn>"
+    }
+  }
+}
