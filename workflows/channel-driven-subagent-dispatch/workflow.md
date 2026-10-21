@@ -56,6 +56,7 @@ Stable worker handles:
 - `check` — default check worker
 - `check-cc` — Claude check worker
 - `check-cx` — Codex check worker
+- `research` — code/tech research worker (Phase 1.2)
 
 ---
 
@@ -112,7 +113,7 @@ Complex task: ask the user if you can create a Trellis task and enter the planni
 Load `trellis-brainstorm`; stay in planning.
 Lightweight: `prd.md` can be enough. Complex: finish `prd.md`, `design.md`, and `implement.md`; ask for review before `task.py start`.
 Multi-deliverable scope: consider a parent task plus independently verifiable child tasks; dependencies must be written in child artifacts, not implied by tree position.
-Channel-worker mode: curate `implement.jsonl` and `check.jsonl` as spec/research manifests before start.
+Channel-worker mode: dispatch `--agent research` for Phase 1.2, then curate `implement.jsonl` and `check.jsonl` as spec/research manifests before start.
 [/workflow-state:planning]
 
 [workflow-state:planning-inline]
@@ -171,6 +172,7 @@ Code committed. Run `/trellis:finish-work`; if dirty, return to Phase 3.4 first.
 [Claude Code, Cursor, OpenCode, codex-sub-agent, Kiro, Gemini, Qoder, CodeBuddy, Copilot, Droid, Pi]
 
 - Planning or unclear requirements -> `trellis-brainstorm`.
+- Phase 1 research -> `trellis channel spawn --agent research`.
 - `in_progress` implementation -> `trellis channel spawn --agent implement`.
 - `in_progress` quality check -> `trellis channel spawn --agent check`.
 - Repeated debugging -> `trellis-break-loop`; spec updates -> `trellis-update-spec`.
@@ -215,7 +217,20 @@ Requirements:
 
 #### 1.2 Research `[optional · repeatable]`
 
-When research is needed, write results to `{TASK_DIR}/research/`. Research files must be usable by later workers.
+When research is needed, dispatch a research worker instead of researching inline:
+
+```bash
+TASK=.trellis/tasks/<active-task>
+trellis channel spawn research-<topic> --agent research --as research \
+  --file "$TASK/prd.md" --cwd "$PWD" --timeout 30m
+trellis channel send research-<topic> --as main --to research --text-file /tmp/research-brief.md
+trellis channel wait research-<topic> --as main --kind done --from research --timeout 30m
+trellis channel messages research-<topic> --raw --from research --last 20
+```
+
+The worker writes findings to `{TASK_DIR}/research/`. Research files must be
+usable by later workers: list them in `implement.jsonl` / `check.jsonl` in
+Step 1.3 so implement and check workers receive them as context.
 
 #### 1.3 Configure context `[required · once]`
 
